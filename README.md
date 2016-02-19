@@ -15,7 +15,11 @@ plt.show()
 #DJIA指数历史水平
 import numpy as np
 #计算单个对数收益率值
-%%time
+%time
 DJIA['Ret_Loop']=0.0
 for i in range(1,len(DJIA)):
     DJIA['Ret_Loop'][i]=np.log(DJIA['Close'][i]/DJIA['Close'][i-1])
+DJIA[['Close','Ret_Loop']].tail()
+#一个索引位置
+%time DJIA['Return']=np.log(DJIA['Close']/DJIA['Close'].shift(1))
+DJIA[['Close','Ret_Loop','Return']].tail()
