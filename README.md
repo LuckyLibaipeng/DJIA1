@@ -12,8 +12,9 @@ DJIA.tail()
 DJIA['Close'].plot(figsize=(8,5))
 import matplotlib.pyplot as plt
 plt.show()
-#DJIa指数历史水平
+#DJIA指数历史水平
 import numpy as np
+#计算单个对数收益率值
 %%time
 DJIA['Ret_Loop']=0.0
 for i in range(1,len(DJIA)):
