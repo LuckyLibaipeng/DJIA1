@@ -24,7 +24,7 @@ DJIA[['Close','Ret_Loop']].tail()
 %time DJIA['Return']=np.log(DJIA['Close']/DJIA['Close'].shift(1))
 DJIA[['Close','Ret_Loop','Return']].tail()
 del DJIA['Ret_Loop']
-DJIA[['Close','Ret——Loop']].plot(subplots=True,style='b',figsize=(8,5))
+DJIA[['Close','Return']].plot(subplots=True,style='b',figsize=(8,5))
 plt.show()
 #移动平均值
 import pandas as pd
@@ -32,3 +32,7 @@ DJIA['42d']=pd.rolling_mean(DJIA['Close'],window=42)
 DJIA['252d']=pd.rolling_mean(DJIA['Close'],window=252)
 DJIA[['Close','42d','252d']].tail()
 DJIA[['Close','42d','252d']].plot(figsize=(8,5))
+#移动历史波动率
+import math
+DJIA=['Mov_Vol']=pd.rolling_std(DJIA['Return'],window=252)*math.sqrt(252)#moving annual volatility
+DJIA[['Close','Mov_Vol','Return']].plot(subplots=True,style='b',figsize=(8,7))
