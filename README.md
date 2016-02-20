@@ -32,7 +32,7 @@ DJIA['42d']=pd.rolling_mean(DJIA['Close'],window=42)
 DJIA['252d']=pd.rolling_mean(DJIA['Close'],window=252)
 DJIA[['Close','42d','252d']].tail()
 DJIA[['Close','42d','252d']].plot(figsize=(8,5))
-#移动历史波动率
+#移动历史波动率,杠杆效应
 import math
-DJIA=['Mov_Vol']=pd.rolling_std(DJIA['Return'],window=252)*math.sqrt(252)#moving annual volatility
+DJIA['Mov_Vol']=pd.rolling_std(DJIA['Return'],window=252)*math.sqrt(252)#moving annual volatility
 DJIA[['Close','Mov_Vol','Return']].plot(subplots=True,style='b',figsize=(8,7))
